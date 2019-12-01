@@ -1,0 +1,44 @@
+ if((tblSubject.getRowCount())==added)
+         {
+             ttarray[i][0] =new subAndDate("--",dateList.get(i).day(),-1);
+             ttarray[i][1] =new subAndDate("--",dateList.get(i).day(),-1);
+             
+         }else{
+         if(i==0)
+         {
+                ttarray[i][0] =new subAndDate(SubjectList.get(added).getSubCode(),dateList.get(i).day(), (int) SubjectList.get(added).getCredit());
+                ttarray[i][1] =new subAndDate("--",dateList.get(i).day(),-1);
+                System.out.println("---------------------"+ttarray[i][0].getSub());
+                
+         added++;
+         }else{
+         
+         int nextC =(int) SubjectList.get(added).getCredit();
+         double slt = nextC*sloatpercredite;
+         
+          System.out.println("ttlslt===>"+ttlslt);
+         if(counter>=slt)
+         { counter=0;
+             if((ttlslt-Math.floor(ttlslt))<0.5)
+             {
+                 ttarray[i][0]=new subAndDate(SubjectList.get(added).getSubCode(),dateList.get(i).day(), (int) SubjectList.get(added).getCredit());
+                 ttarray[i][1] =new subAndDate("--",dateList.get(i).day(),-1);
+                 added++;
+                 ttlslt +=slt;
+             }
+             else{
+                    ttarray[i][1]=new subAndDate(SubjectList.get(added).getSubCode(),dateList.get(i).day(), (int) SubjectList.get(added).getCredit());
+                 ttarray[i][0] =new subAndDate("--",dateList.get(i).day(),-1);
+                 added++;
+                 ttlslt +=slt;
+             }
+         }else{ 
+             counter++;
+             System.out.println("--------------------------------------------------");
+             ttarray[i][0] =new subAndDate("--",dateList.get(i).day(),-1);
+             ttarray[i][1] =new subAndDate("--",dateList.get(i).day(),-1);
+         
+         }
+             
+         }
+     }
